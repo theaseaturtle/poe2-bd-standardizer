@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.egg-info/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Input / Output large raw files (keep repo lightweight)
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+
+# Native compiled binaries
+scripts/extract_pdf
+
+# Temporary files
+*.tmp
+*.log
