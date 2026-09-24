@@ -24,3 +24,4 @@ scripts/extract_pdf
 # Temporary files
 *.tmp
 *.log
+scratch/
