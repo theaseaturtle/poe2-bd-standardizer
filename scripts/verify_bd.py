@@ -48,8 +48,8 @@ def verify_bd(md_path, check_zip=False):
         print("  [PASS] Zero image dependencies detected (100% pure-text, lightweight).")
         
         # Check Trinity Pillar 1: Passive Tree Progression & Notables
-        has_tree_progression = any(kw in content for kw in ["天賦", "天賦樹", "加點", "昇華"])
-        has_act_progression = any(kw in content for kw in ["Act 1", "第一章", "第一幕", "階段過渡", "天賦樹分幕"])
+        has_tree_progression = any(kw in content for kw in ["天賦", "天赋", "天賦樹", "天赋树", "加點", "加点", "昇華", "升华"])
+        has_act_progression = any(kw in content for kw in ["Act 1", "第一章", "第一幕", "第一阶段", "第一階段", "階段過渡", "天賦樹分幕"])
         if not (has_tree_progression and has_act_progression):
             print("  [FAIL] Trinity Pillar 1 missing: Passive Tree progression roadmap / Notables not detected.")
             all_passed = False
@@ -57,9 +57,9 @@ def verify_bd(md_path, check_zip=False):
             print("  [PASS] Trinity Pillar 1: Passive tree phased progression & notables present.")
 
         # Check Trinity Pillar 2: Numerical Thresholds & Defense Checks
-        has_res = any(kw in content for kw in ["抗性", "火抗", "冰抗", "電抗", "75%"])
-        has_attrs = any(kw in content for kw in ["力量", "敏捷", "智慧", "屬性門檻", "屬性需求"])
-        has_weapon = any(kw in content for kw in ["點傷", "攻速", "裝填", "十字弓", "基底", "武器"])
+        has_res = any(kw in content for kw in ["抗性", "火抗", "冰抗", "電抗", "电抗", "75%"])
+        has_attrs = any(kw in content for kw in ["力量", "敏捷", "智慧", "屬性門檻", "属性门槛", "屬性需求", "属性需求"])
+        has_weapon = any(kw in content for kw in ["點傷", "点伤", "攻速", "裝填", "装填", "十字弓", "基底", "武器"])
         if not (has_res and (has_attrs or has_weapon)):
             print("  [FAIL] Trinity Pillar 2 missing: Quantitative numerical thresholds (Resistances/Attributes/Weapon) not detected.")
             all_passed = False

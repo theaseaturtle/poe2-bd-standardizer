@@ -1,0 +1,351 @@
+{
+  "$schema": "poe2-terms-rosetta-stone-v1",
+  "description": "POE2 多维对照中枢：民间黑话 / 简中 / 官方繁中 (poe2db) / 官方英文 (Trade) / 获取与市集筛选",
+  "ascendancies": [
+    {
+      "class_tw": "傭兵",
+      "class_en": "Mercenary",
+      "ascendancy_tw": "女巫獵人",
+      "ascendancy_en": "Witchhunter",
+      "slang_or_cn": ["女巫猎手", "猎手", "魔女猎手"]
+    },
+    {
+      "class_tw": "傭兵",
+      "class_en": "Mercenary",
+      "ascendancy_tw": "古靈軍團",
+      "ascendancy_en": "Gemling Legionnaire",
+      "slang_or_cn": ["宝石术士", "宝术", "军团"]
+    },
+    {
+      "class_tw": "戰士",
+      "class_en": "Warrior",
+      "ascendancy_tw": "泰坦",
+      "ascendancy_en": "Titan",
+      "slang_or_cn": ["泰坦"]
+    },
+    {
+      "class_tw": "戰士",
+      "class_en": "Warrior",
+      "ascendancy_tw": "戰爭使者",
+      "ascendancy_en": "Warbringer",
+      "slang_or_cn": ["战狂", "酋长", "战争使者"]
+    },
+    {
+      "class_tw": "遊俠",
+      "class_en": "Ranger",
+      "ascendancy_tw": "銳眼",
+      "ascendancy_en": "Deadeye",
+      "slang_or_cn": ["神射手", "锐眼"]
+    },
+    {
+      "class_tw": "遊俠",
+      "class_en": "Ranger",
+      "ascendancy_tw": "追獵者",
+      "ascendancy_en": "Pathfinder",
+      "slang_or_cn": ["药侠", "拓荒者", "追猎者"]
+    },
+    {
+      "class_tw": "女巫",
+      "class_en": "Witch",
+      "ascendancy_tw": "獄火師",
+      "ascendancy_en": "Infernalist",
+      "slang_or_cn": ["炼狱术士", "火法", "狱火师"]
+    },
+    {
+      "class_tw": "女巫",
+      "class_en": "Witch",
+      "ascendancy_tw": "血法師",
+      "ascendancy_en": "Blood Mage",
+      "slang_or_cn": ["鲜血法师", "血法"]
+    },
+    {
+      "class_tw": "僧侶",
+      "class_en": "Monk",
+      "ascendancy_tw": "祈靈者",
+      "ascendancy_en": "Invoker",
+      "slang_or_cn": ["祈求者", "祈灵"]
+    },
+    {
+      "class_tw": "僧侶",
+      "class_en": "Monk",
+      "ascendancy_tw": "夏烏拉侍僧",
+      "ascendancy_en": "Acolyte of Chayula",
+      "slang_or_cn": ["侍僧", "杂技师", "混沌僧"]
+    },
+    {
+      "class_tw": "女術者",
+      "class_en": "Sorceress",
+      "ascendancy_tw": "風暴編織者",
+      "ascendancy_en": "Stormweaver",
+      "slang_or_cn": ["风暴织者", "雷法"]
+    },
+    {
+      "class_tw": "女術者",
+      "class_en": "Sorceress",
+      "ascendancy_tw": "時空幻術師",
+      "ascendancy_en": "Chronomancer",
+      "slang_or_cn": ["时空术士", "时空"]
+    }
+  ],
+  "active_gems": [
+    {
+      "zh_tw": "爆炸擲彈",
+      "en": "Explosive Grenade",
+      "zh_cn": "爆炸榴弹",
+      "slang": ["火雷", "爆炸手雷", "榴弹", "火手雷"],
+      "color": "🔴",
+      "vendor": "第 1 章 奧瑪斯 (Ogham)",
+      "weapon_req": "十字弓 (Crossbow)"
+    },
+    {
+      "zh_tw": "毒氣擲彈",
+      "en": "Gas Grenade",
+      "zh_cn": "毒气榴弹",
+      "slang": ["毒雷", "毒雾", "毒榴弹", "瓦斯榴弹"],
+      "color": "🟢",
+      "vendor": "第 1 章 任务奖励 / 奧瑪斯",
+      "weapon_req": "十字弓 (Crossbow)"
+    },
+    {
+      "zh_tw": "閃光擲彈",
+      "en": "Flash Grenade",
+      "zh_cn": "闪光榴弹",
+      "slang": ["电雷", "闪光弹", "破防雷", "击晕雷"],
+      "color": "🔵",
+      "vendor": "第 1 章 奧瑪斯",
+      "weapon_req": "十字弓 (Crossbow)"
+    },
+    {
+      "zh_tw": "燃油擲彈",
+      "en": "Oil Grenade",
+      "zh_cn": "燃油榴弹",
+      "slang": ["油雷", "机油弹"],
+      "color": "🔴",
+      "vendor": "第 1 章 奧瑪斯",
+      "weapon_req": "十字弓 (Crossbow)"
+    },
+    {
+      "zh_tw": "連發射擊",
+      "en": "Rapid Shot",
+      "zh_cn": "连发射击",
+      "slang": ["连射", "机枪", "突突突"],
+      "color": "🟢",
+      "vendor": "第 1 章 奧瑪斯",
+      "weapon_req": "十字弓 (Crossbow)"
+    },
+    {
+      "zh_tw": "穿甲彈",
+      "en": "Armor Piercing Rounds",
+      "zh_cn": "穿甲弹",
+      "slang": ["穿甲", "破甲射击"],
+      "color": "🟢",
+      "vendor": "第 1 章 奧瑪斯",
+      "weapon_req": "十字弓 (Crossbow)"
+    },
+    {
+      "zh_tw": "猛撲",
+      "en": "Pounce",
+      "zh_cn": "猛扑",
+      "slang": ["狼扑", "狼跳", "跳跃"],
+      "color": "🟢",
+      "vendor": "第 1 章 副手魔符 (Talisman) 自带",
+      "weapon_req": "魔符 (Talisman)"
+    },
+    {
+      "zh_tw": "寒霜爆",
+      "en": "Frost Bomb",
+      "zh_cn": "冰霜炸弹",
+      "slang": ["水雷", "降抗炸弹"],
+      "color": "🔵",
+      "vendor": "第 1 章 奧瑪斯",
+      "weapon_req": "法杖 / 权杖"
+    },
+    {
+      "zh_tw": "兇猛怒吼",
+      "en": "Ferocious Roar",
+      "zh_cn": "凶猛战吼",
+      "slang": ["熊吼", "狂暴战吼", "红吼"],
+      "color": "🔴",
+      "vendor": "第 2 章 任务 / 商人",
+      "weapon_req": "任意近战 / 徒手"
+    },
+    {
+      "zh_tw": "旋風斬",
+      "en": "Whirlwind",
+      "zh_cn": "旋风斩",
+      "slang": ["大风车", "转转转", "回旋斩"],
+      "color": "🔴",
+      "vendor": "第 2 章",
+      "weapon_req": "双手武器 / 单手武器"
+    },
+    {
+      "zh_tw": "灰燼之捷",
+      "en": "Herald of Ash",
+      "zh_cn": "灰烬之捷",
+      "slang": ["火捷", "灰烬光环"],
+      "color": "🔴",
+      "vendor": "第 2 章 (占用 30 精魂)",
+      "weapon_req": "光环保留"
+    },
+    {
+      "zh_tw": "戰爭之旗",
+      "en": "War Banner",
+      "zh_cn": "战旗",
+      "slang": ["旗子", "红旗"],
+      "color": "🔴",
+      "vendor": "第 1 章 (充能插旗)",
+      "weapon_req": "光环增益"
+    }
+  ],
+  "support_gems": [
+    {
+      "zh_tw": "散射彈藥",
+      "en": "Scatter Ammo",
+      "zh_cn": "霰弹弹药",
+      "slang": ["散弹", "散射", "多重子弹"],
+      "color": "🟢",
+      "effect": "十字弓弹药分裂为散射弹片"
+    },
+    {
+      "zh_tw": "多重射擊",
+      "en": "Multiple Projectiles Support",
+      "zh_cn": "多重射击",
+      "slang": ["高投", "多分枝", "多重投射物"],
+      "color": "🟢",
+      "effect": "增加额外投射物"
+    },
+    {
+      "zh_tw": "易怒",
+      "en": "Expedite Support",
+      "zh_cn": "短暂引线",
+      "slang": ["快速引爆", "短引信", "易怒"],
+      "color": "🔴",
+      "effect": "大幅缩短掷弹延迟时间"
+    },
+    {
+      "zh_tw": "毒蛇之毒",
+      "en": "Viper's Venom",
+      "zh_cn": "毒蛇之毒",
+      "slang": ["毒附魔", "蛇毒", "附加毒"],
+      "color": "🟢",
+      "effect": "攻击附加中毒与混沌伤害"
+    },
+    {
+      "zh_tw": "元素武裝",
+      "en": "Elemental Armament Support",
+      "zh_cn": "元素武装",
+      "slang": ["元素点伤", "武装"],
+      "color": "🔴",
+      "effect": "大幅提升元素攻击伤害"
+    },
+    {
+      "zh_tw": "審慎",
+      "en": "Deliberation Support",
+      "zh_cn": "从容不迫",
+      "slang": ["走射增伤", "移动施法", "审慎"],
+      "color": "🟢",
+      "effect": "移动中攻击/施放获得极高增伤"
+    },
+    {
+      "zh_tw": "終止",
+      "en": "Cadence Support",
+      "zh_cn": "节律",
+      "slang": ["节奏", "终止", "攻频加速"],
+      "color": "🟢",
+      "effect": "根据攻击节奏提供攻速与增伤"
+    },
+    {
+      "zh_tw": "疾速攻擊",
+      "en": "Faster Attack Support",
+      "zh_cn": "极速攻击",
+      "slang": ["快攻", "攻速辅助"],
+      "color": "🟢",
+      "effect": "大幅提升攻击速度"
+    },
+    {
+      "zh_tw": "元素專注",
+      "en": "Elemental Focus Support",
+      "zh_cn": "元素专注",
+      "slang": ["元专", "纯元素增伤"],
+      "color": "🔵",
+      "effect": "获得更多元素伤害，但无法造成异常状态"
+    },
+    {
+      "zh_tw": "範圍擴大",
+      "en": "Increased Area of Effect Support",
+      "zh_cn": "范围扩大",
+      "slang": ["扩区", "大范围"],
+      "color": "🔵",
+      "effect": "增加技能与爆炸范围"
+    },
+    {
+      "zh_tw": "延長持續時間",
+      "en": "More Duration Support",
+      "zh_cn": "延长持续时间",
+      "slang": ["增效", "长续航"],
+      "color": "🔴",
+      "effect": "增加增益或地面效果持续时间"
+    }
+  ],
+  "base_types_and_items": [
+    {
+      "zh_tw": "十字弓",
+      "en": "Crossbow",
+      "zh_cn": "十字弩",
+      "slang": ["手弩", "弩", "重弩"],
+      "trade_category": "Weapon / Crossbow"
+    },
+    {
+      "zh_tw": "轟擊十字弓",
+      "en": "Bombard Crossbow",
+      "zh_cn": "轰击十字弩",
+      "slang": ["轰击弩", "加农弩", "爆炸弩底子"],
+      "trade_category": "Crossbow",
+      "implicit": "擲彈技能發射額外 1 個投射物 (Grenade Skills fire 1 additional Projectile)"
+    },
+    {
+      "zh_tw": "魔符",
+      "en": "Talisman",
+      "zh_cn": "魔符",
+      "slang": ["狼头", "狼魔符", "跳跃副手"],
+      "trade_category": "Amulet / Off-hand"
+    },
+    {
+      "zh_tw": "板甲腰帶",
+      "en": "Plate Belt",
+      "zh_cn": "板甲腰带",
+      "slang": ["重甲腰带", "力量护甲腰带"],
+      "trade_category": "Belt"
+    }
+  ],
+  "core_mechanics": [
+    {
+      "zh_tw": "精魂",
+      "en": "Spirit",
+      "zh_cn": "魔力保留 / 灵魂",
+      "slang": ["蓝量保留", "光环上限", "精神"],
+      "desc": "POE2 独创光环与召唤物专属保留池（初始 100 点，不受魔力影响）"
+    },
+    {
+      "zh_tw": "未雕琢的技能寶石",
+      "en": "Uncut Skill Gem",
+      "zh_cn": "未切技能宝石",
+      "slang": ["原石", "技能原石"],
+      "desc": "自选等级与技能的主动技能胚子"
+    },
+    {
+      "zh_tw": "未雕琢的輔助寶石",
+      "en": "Uncut Support Gem",
+      "zh_cn": "未切辅助宝石",
+      "slang": ["辅助原石"],
+      "desc": "自选等级的辅助技能胚子"
+    },
+    {
+      "zh_tw": "架勢擊破",
+      "en": "Break / Stagger",
+      "zh_cn": "架势条 / 击晕条",
+      "slang": ["打空架势", "破防瘫痪", "失衡"],
+      "desc": "Boss 受到高冲击/闪光后累积满瘫痪并承受巨量额外伤害"
+    }
+  ]
+}
