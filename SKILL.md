@@ -1,64 +1,68 @@
 ---
 name: poe2-bd-standardizer
-description: POE2 (流放之路 2 / Path of Exile 2) 术语对齐中枢与实战 HUD 备忘单助手。专治各路博主黑话、国服简中、国际服官方繁中与官方市集 (Trade) 英文混杂搜不到的痛点，提供随问随查的多维对照卡片，并将散乱攻略榨干提炼为边玩边看的单页极简 HUD 备忘单（含结构化技能连线矩阵表格）。当用户提及 POE2 BD 整理、流放之路 2 配装解析、技能连线速查、黑话翻译或使用 /poe2-bd 时触发。
+description: Standardize Path of Exile 2 (PoE2 / 流放之路 2 / 流亡黯道 2) builds into verified HUD cheatsheets and multi-language trade matrices. Trigger when user mentions PoE2 builds, BD 整理, 配装解析, 技能连线, 术语对齐, 黑话破译, or /poe2-bd.
 ---
 
-# POE2 术语对齐中枢与实战 HUD 备忘单助手 (POE2 Rosetta Stone & HUD Assistant)
+# POE2 术语对齐中枢与实战 HUD 备忘单系统 (PoE2 Rosetta Stone & HUD Assistant)
 
-本 Skill 专为《流亡黯道 2 / 流放之路 2》(Path of Exile 2) 玩家打造，核心解决**「博主黑话、国服简中、国际服官方繁中与市集 (Trade) 英文混杂，导致游戏内找不到技能、市集搜不出装备」**的核心痛点。
-
-彻底抛弃繁重低效的第三方格式逆向工程，聚焦于**「精准术语映射」**与**「边玩边看的极简实战速查」**。
-
----
-
-## 核心语言与术语规范 (Language & Terminology Rules)
-
-1. **日常交互与分析说明语言**：一律使用**简体中文**（对话、机制剖析、走线建议、操作要领）。
-2. **游戏专有名词标注铁律**：
-   - 所有游戏实体（技能石、辅助石、装备名、基底、词缀、天赋大点、升华职业等）必须严格标注：
-     * **【官方繁中】**（以 [poe2db.tw](https://poe2db.tw/tw/) 国际服官方繁体为唯一基准，确保在游戏内背包与商人处一眼辨认）。
-     * **【官方英文】**（确保在官方市集 [Path of Exile Trade](https://www.pathofexile.com/trade2) 中能直接复制搜索）。
-   - 严禁机械简转繁（如国服“十字弩”必须正名为“**十字弓**”，“榴弹”必须正名为“**擲彈**”，“雇佣兵”必须正名为“**傭兵**”，“女巫猎手”必须正名为“**女巫獵人**”）。
+本 Skill 是将所有非结构化、黑话混杂的 PoE2 攻略转化为**高保真、零臆测、可直接用于市集搜索与打游戏副屏查阅的实战 HUD 备忘单**的执行路由器。
 
 ---
 
-## 双核心运行模式 (Operational Modes)
+## 路由工作流与完成标准 (Pipeline & Hard Completion Criteria)
 
-### 模式一：随问随查与黑话破译 (Instant Query & Rosetta Stone)
+每次处理 PoE2 BD 时，严格按顺序执行以下 4 步流程。每一个步骤只有在其 **完成判定 (Completion Criteria)** 100% 满足后，方可推进至下一步：
 
-* **适用场景**：玩家在看直播、刷视频或看攻略时，遇到看不懂的黑话或简繁混杂名词，随手发来一段话或截图片段。
-* **交付要求**：
-  1. 用通俗易懂的**简体中文**讲透该搭配的实战机制。
-  2. 输出结构化**多维对照卡片**，清楚标明：`攻略黑话/简中 ➡️ 游戏内官方繁中 ➡️ 市集 Trade 英文搜索词 ➡️ 获取章节与筛选建议`。
-  3. 若涉及技能与辅助石搭配，**必须使用 Markdown 表格呈现连线矩阵**。
+### Step 1: 规模研判与分支路由 (Triage & Route)
+* **短文本/单点破译分支 (Instant Query)**：若输入为单个技能、装备或片段黑话咨询（< 300 字），直接在主上下文中执行 Step 3 输出多维对照卡片。
+* **长文/视频稿/天梯快照分支 (Full HUD Cheatsheet)**：若输入为完整攻略或文档，触发完整多 Agent 协同流水线（Step 2 $\to$ 5）。
 
-### 模式二：实战 HUD 备忘单生成 (HUD Cheat-Sheet Generation)
+### Step 2: 降维解构与脱水 (Demystification)
+* **执行角色**：[`agents/ingestion_demystifier.md`](agents/ingestion_demystifier.md)
+* **核心动作**：剥除作者生活琐事、引流废话与夸张情绪词，提炼“触发源 $\to$ 介质 $\to$ 承伤 $\to$ 猝死点”四大机制因果链。
+* **完成判定 (Completion Criterion)**：
+  - [x] 四联机制链完整提取；
+  - [x] 原文未提及的抗性、精魂或连招已明确标记为 `[⚠️ 原文未提及/缺项]`，无任何先行脑补。
 
-* **适用场景**：玩家丢入一篇长文、链接或本地文档，需要整理出一份打游戏时可以挂在副屏或手机上“边玩边看”的精简备忘录。
-* **交付要求**：
-  1. **彻底剥离废话**：无视作者的生活琐事与冗长排版，纯文本输出（体积控制在 5~15 KB 以内）。
-  2. **四大核心实战板块**：
-     - **一、 技能宝石连线与获取矩阵**：**强制使用表格**（主动技能繁中/英文、孔色孔数、连线辅助繁/英/俗称、购买章节与 NPC、战斗机制）。
-     - **二、 官方市集 (Trade) 淘装与核心基底速查**：表格列出关键基底、核心词缀英文筛选词与质变点。
-     - **三、 角色核心数值及格线**：明确抗性（剧情 50%+，异界 75% 满抗）、有效血量、属性门槛要求。
-     - **四、 天赋步进路线与模拟器代码**：分阶段走线方向与必点显著大点，内嵌折叠的 `.build` / BuildPlanner 纯文本代码。
-  3. **Notion 直传支持**：支持直接通过 Notion MCP 将生成的 HUD 备忘单发布到用户的 Notion 页面，秒开且支持原生表格与 Toggle 折叠。
+### Step 3: 权威术语对齐与连线表格化 (Rosetta Alignment)
+* **执行角色**：[`agents/rosetta_normalizer.md`](agents/rosetta_normalizer.md)
+* **参考依据**：单一天理数据源 [`data/poe2_terms.json`](data/poe2_terms.json) 与 [`templates/poe2_hud_cheatsheet_template.md`](templates/poe2_hud_cheatsheet_template.md)
+* **核心动作**：将所有民间黑话与国服简中强制清洗为 **【官方繁中】(poe2db)** 与 **【官方英文】(PoE Trade 搜索词)**，并强制以 Markdown 表格输出技能连线。
+* **完成判定 (Completion Criterion)**：
+  - [x] 技能连线必须采用 5 列表格标准（技能、插槽颜色/孔数、辅助宝石、NPC与购买章节、手感与联动）；
+  - [x] 市集淘装表包含英文基底与英文筛选词（Item Type / Stat）。
+
+### Step 4: 红队反幻觉审查与测试门禁 (Adversarial Audit Gate)
+* **执行角色**：[`agents/zero_hallucination_auditor.md`](agents/zero_hallucination_auditor.md)
+* **工具执行**：`python3 scripts/verify_bd.py <产物路径>` 与 `python3 scripts/run_adversarial_eval.py <产物路径>`
+* **完成判定 (Completion Criterion)**：
+  - [x] `verify_bd.py` 执行退出码为 0（所有 5 项门禁全部 PASS）；
+  - [x] 0 伪繁体黑名单命中（无“十字弩”、“雇佣兵”、“女巫猎手”等遗留）；
+  - [x] 0 非法占位符（无 TODO / FIXME / 待补充）；
+  - [x] 产物与原文严格保真，凡原文缺项必有 `[⚠️ 原文未提及/缺项]`。未满足此条直接打回重做。
+
+### Step 5: 规范归档与知识库交付 (Delivery & Notion Sync)
+* **执行角色**：[`agents/porter_publisher.md`](agents/porter_publisher.md)
+* **核心动作**：按四段式公式 `[游戏版本/赛季]_[基础职业+昇華]_[核心机制/技能]_[BD正式名称].md` 归档至 `output/` 目录。
+* **完成判定 (Completion Criterion)**：
+  - [x] 顶部 YAML Frontmatter 包含 `version`, `class`, `ascendancy`, `stage`, `budget`, `core_uniques` 六大字段；
+  - [x] 若用户开启 Notion MCP，一键直传对应页面并验证排版。
 
 ---
 
-## 技能连线表格标准规范 (Gem Matrix Table Standard)
+## 零臆测铁律与负向约束 (Ironclad Negative Constraints)
 
-无论在即时问答还是 HUD 备忘单中，涉及技能与辅助宝石搭配时，必须遵循以下表格格式：
-
-| 主动技能 (官方繁中 / 英文) | 插槽颜色/孔数 | 连线辅助宝石 (官方繁中 / 英文 / 攻略俗称) | 开启/购买章节与 NPC | 战斗手感与联动机制 |
-| :--- | :---: | :--- | :--- | :--- |
-| **爆炸擲彈**<br>`Explosive Grenade` | 🔴🟢🟢 (3孔) | 1. **散射彈藥** (`Scatter Ammo` / 散弹)<br>2. **毒蛇之毒** (`Viper's Venom` / 毒附魔) | 第 1 章（奧瑪斯 Ogham 购买） | 核心主力刷图与清杂技能，射击时散射多枚延时炸弹覆盖全屏 |
-| **毒氣擲彈**<br>`Gas Grenade` | 🟢🔴 (2孔) | 1. **易怒** (`Expedite Support` / 短暂引线) | 第 1 章（任务奖励自选） | 铺开大范围持续毒雾，随后用火焰爆炸引爆产生剧烈连锁反应 |
+1. **绝对零脑补数值**：原作者未明确指明抗性阈值、精魂预算分配或属性门槛时，**严禁自行推算或填满数值**，必须严格输出 `[⚠️ 原文未提及/缺项]`。
+2. **严禁填空式虚构辅助石**：作者只写了 3 连就只写 3 连，绝不允许为了美观在表格中自行脑补 5 连或 6 连。
+3. **黑名单硬性拦截**：严禁出现“十字弩”（必须为【十字弓】）、“雇佣兵”（必须为【傭兵】）、“女巫猎手”（必须为【女巫獵人】）等任何国服特供或伪繁体名称。
+4. **语言双轨规范**：解析、指引与说明一律使用**简体中文**；所有游戏实体专有名词必须使用**官方繁中 + 官方英文**。
 
 ---
 
-## 常用辅助资源 (Data & Templates)
+## 核心资产指针 (Disclosed References)
 
-* **数据中枢**：`data/poe2_terms.json`（收录职业、昇华、技能、辅助、基底、黑话与市集关键词）。
-* **标准模板**：`templates/poe2_hud_cheatsheet_template.md`（极简 HUD 备忘录模板）。
-* **质量检测**：`scripts/verify_bd.py`（自动化验证表格完整性、纯文本零依赖与 YAML 元数据）。
+* **领域词典 (SSOT)**: [`data/poe2_terms.json`](data/poe2_terms.json)
+* **HUD 模板**: [`templates/poe2_hud_cheatsheet_template.md`](templates/poe2_hud_cheatsheet_template.md)
+* **质量门禁**: [`scripts/verify_bd.py`](scripts/verify_bd.py)
+* **红队评测**: [`scripts/run_adversarial_eval.py`](scripts/run_adversarial_eval.py)
+* **Agent SOP 目录**: [`agents/`](agents/)

@@ -5,6 +5,7 @@ class: "[基础职业官方繁中，如 傭兵]"
 ascendancy: "[升华职业官方繁中，如 女巫獵人]"
 stage: "[开荒 / 伐木 / 终局]"
 budget: "[0造价白手起家 / 中低造价 / 高造价]"
+core_uniques: ["[绑定暗金或质变装备，无则留空或填无]"]
 verified: true
 ---
 

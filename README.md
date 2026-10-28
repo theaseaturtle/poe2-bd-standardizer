@@ -34,17 +34,23 @@
 
 ```text
 .
-├── SKILL.md                 # Antigravity / Claude Code 技能核心定义
-├── CONTEXT.md               # 项目领域模型与规范说明 (含 ADR-019 战略转向)
+├── SKILL.md                 # Antigravity / Claude Code 技能核心定义 (含多 Agent 协同)
+├── CONTEXT.md               # 项目领域模型与规范说明 (含 ADR-019 & ADR-020)
+├── agents/                  # 多 Agent 专业分工角色定义与 SOP
+│   ├── ingestion_demystifier.md   # Agent 1: 前哨解构与降维提取专家
+│   ├── rosetta_normalizer.md      # Agent 2: 术语消歧与官方繁英对齐专家
+│   ├── zero_hallucination_auditor.md # Agent 3: 零臆测红队反幻觉审查官
+│   └── porter_publisher.md        # Agent 4: 资产交付与 Notion 发布官
 ├── data/
 │   └── poe2_terms.json      # POE2 术语多维对照中枢 (职业、技能、辅助、基底、黑话)
 ├── templates/
 │   └── poe2_hud_cheatsheet_template.md # 实战 HUD 备忘单标准模板 (表格化连线)
 ├── references/
 │   └── poe2_terms_reference.md # 官方繁体中英名词消歧参考速查表
-├── docs/adrs/               # 架构决策记录 (ADR-001 ~ ADR-019)
+├── docs/adrs/               # 架构决策记录 (ADR-001 ~ ADR-020)
 ├── scripts/
-│   └── verify_bd.py         # 自动化质量验证脚本 (验证表格行数与数值及格线)
+│   ├── verify_bd.py         # 自动化质量验证脚本 (验证表格行数、元数据与伪繁体拦截)
+│   └── run_adversarial_eval.py # 红蓝对抗自动化评测脚本 (评估抗幻觉基准)
 ├── input/                   # 原始文档或加点文件 (.build)
 └── output/                  # 标准化 HUD 备忘单交付目录
 ```
@@ -64,3 +70,10 @@
 * 包含装备市集筛选词缀
 * 包含抗性与血量及格线
 * 包含折叠的 BuildPlanner 纯文本模拟器配置串
+
+### 模式三：多 Agent 协同流水线与红蓝对抗质检
+面对万字长篇口播稿或超复杂机制 BD 时，启动多 Agent 流水线分工：
+1. **Ingestion** 脱水降维，提取核心因果链；
+2. **Rosetta** 严密正名，套入标准连线表格；
+3. **Auditor** 运行 `verify_bd.py` 与 `run_adversarial_eval.py` 严格拦截脑补与伪繁体；
+4. **Publisher** 四段式命名归档并直传知识库。

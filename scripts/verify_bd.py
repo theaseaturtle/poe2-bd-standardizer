@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-POE2 BD Standardizer - Automated Quality & Completeness Verifier (ADR-016 & ADR-018)
+POE2 BD Standardizer - Automated Quality & Completeness Verifier 2.0 (ADR-016, ADR-018 & ADR-020)
 Audits a standardized Markdown document for:
 1. Mode Detection:
    - Pure-Text Zero-Image Mode: Verifies Trinity Data Completeness (Passive tree progression,
      Numerical thresholds/attributes, Skill matrix, Zero image bloat).
    - Legacy Image Mode: Verifies 100% extraction-to-reference parity (zero orphans, zero missing).
-2. Forbidden placeholders (e.g. 【輔助 1】, [待補充], TODO, FIXME).
+2. Forbidden placeholders & Slang/Pseudo-Traditional Blacklist (e.g. 十字弩, 女巫獵手, 雇佣兵).
 3. Skills & Support Gem Matrix fidelity (tables present and structured).
-4. Notion Delivery Readiness (Pure-Text lightweight check or ZIP flat structure check).
+4. Delivery Readiness Check (Pure-Text lightweight check or ZIP flat structure check).
 5. Notion YAML Metadata Schema (frontmatter with version, class, stage, uniques).
 Zero external dependencies (pure Python standard library).
 """
@@ -97,8 +97,8 @@ def verify_bd(md_path, check_zip=False):
         else:
             print(f"  [PASS] Zero orphan images ({len(disk_images)} extracted, all referenced).")
 
-    # --- 2. Forbidden Placeholder Check ---
-    print("\n[2/5] Placeholder & Hallucination Check...")
+    # --- 2. Forbidden Placeholder & Pseudo-Traditional Check ---
+    print("\n[2/5] Placeholder & Hallucination & Blacklist Check...")
     forbidden_patterns = [
         (r'【輔助\s*\d+】', "Generic support placeholder (e.g. 【輔助 1】)"),
         (r'【技能名稱】', "Generic skill placeholder (【技能名稱】)"),
@@ -109,11 +109,29 @@ def verify_bd(md_path, check_zip=False):
         (r'\bFIXME\b', "FIXME comment")
     ]
 
+    # ADR-020: Blacklist of non-purified mainland terms & pseudo-traditional entities
+    blacklist_terms = [
+        (r'十字弩', "Mainland/Slang '十字弩' detected -> Must be purified to official '十字弓'"),
+        (r'(?:雇佣兵|僱傭兵)', "Mainland/Slang '雇佣兵' detected -> Must be purified to official '傭兵'"),
+        (r'(?:女巫猎手|女巫獵手)', "Slang '女巫猎手' detected -> Must be purified to official '女巫獵人'"),
+        (r'(?:鲜血法师|鮮血法師)', "Slang '鲜血法师' detected -> Must be purified to official '血法師'"),
+        (r'(?:炼狱术士|煉獄術士)', "Slang '炼狱术士' detected -> Must be purified to official '獄火師'"),
+        (r'(?:宝石术士|寶石術士)', "Slang '宝石术士' detected -> Must be purified to official '古靈軍團'"),
+        (r'(?:爆炸榴弹|爆炸榴彈)', "Slang '爆炸榴弹' detected -> Must be purified to official '爆炸擲彈'"),
+        (r'(?:毒气榴弹|毒氣榴彈)', "Slang '毒气榴弹' detected -> Must be purified to official '毒氣擲彈'"),
+    ]
+
     found_placeholders = []
     for pattern, desc in forbidden_patterns:
         matches = re.findall(pattern, content)
         if matches:
             found_placeholders.append(f"{desc} (found {len(matches)}x)")
+
+    found_blacklist = []
+    for pattern, desc in blacklist_terms:
+        matches = re.findall(pattern, content)
+        if matches:
+            found_blacklist.append(f"{desc} (found {len(matches)}x)")
 
     if found_placeholders:
         for ph in found_placeholders:
@@ -121,6 +139,13 @@ def verify_bd(md_path, check_zip=False):
         all_passed = False
     else:
         print("  [PASS] Zero forbidden placeholders detected in markdown.")
+
+    if found_blacklist:
+        for bl in found_blacklist:
+            print(f"  [FAIL] Unpurified slang/pseudo-traditional entity: {bl}")
+        all_passed = False
+    else:
+        print("  [PASS] Zero unpurified slang/pseudo-traditional entities detected.")
 
     # --- 3. Skills Matrix Quality Check ---
     print("\n[3/5] Skills & Support Gems Matrix Check...")
