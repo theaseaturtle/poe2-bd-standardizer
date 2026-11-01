@@ -48,18 +48,18 @@ def verify_bd(md_path, check_zip=False):
         print("  [PASS] Zero image dependencies detected (100% pure-text, lightweight).")
         
         # Check Trinity Pillar 1: Passive Tree Progression & Notables
-        has_tree_progression = any(kw in content for kw in ["天賦", "天赋", "天賦樹", "天赋树", "加點", "加点", "昇華", "升华"])
+        has_tree_progression = any(kw in content for kw in ["天賦", "天賦樹", "加點", "昇華"])
         has_act_progression = any(kw in content for kw in ["Act 1", "第一章", "第一幕", "第一阶段", "第一階段", "階段過渡", "天賦樹分幕"])
         if not (has_tree_progression and has_act_progression):
-            print("  [FAIL] Trinity Pillar 1 missing: Passive Tree progression roadmap / Notables not detected.")
+            print("  [FAIL] Trinity Pillar 1 missing: Passive Tree progression roadmap / Notables (in Official Traditional Chinese) not detected.")
             all_passed = False
         else:
             print("  [PASS] Trinity Pillar 1: Passive tree phased progression & notables present.")
 
         # Check Trinity Pillar 2: Numerical Thresholds & Defense Checks
-        has_res = any(kw in content for kw in ["抗性", "火抗", "冰抗", "電抗", "电抗", "75%"])
-        has_attrs = any(kw in content for kw in ["力量", "敏捷", "智慧", "屬性門檻", "属性门槛", "屬性需求", "属性需求"])
-        has_weapon = any(kw in content for kw in ["點傷", "点伤", "攻速", "裝填", "装填", "十字弓", "基底", "武器"])
+        has_res = any(kw in content for kw in ["抗性", "火焰抗性", "冰冷抗性", "閃電抗性", "75%"])
+        has_attrs = any(kw in content for kw in ["力量", "敏捷", "智慧", "屬性"])
+        has_weapon = any(kw in content for kw in ["物理傷害", "攻擊速度", "十字弓", "基底", "武器"])
         if not (has_res and (has_attrs or has_weapon)):
             print("  [FAIL] Trinity Pillar 2 missing: Quantitative numerical thresholds (Resistances/Attributes/Weapon) not detected.")
             all_passed = False
@@ -97,11 +97,17 @@ def verify_bd(md_path, check_zip=False):
         else:
             print(f"  [PASS] Zero orphan images ({len(disk_images)} extracted, all referenced).")
 
-    # --- 2. Forbidden Placeholder & Pseudo-Traditional Check ---
-    print("\n[2/5] Placeholder & Hallucination & Blacklist Check...")
+    # --- 2. Forbidden Placeholder & Pseudo-Traditional & Hybrid-Script Gate (ADR-020 & ADR-021) ---
+    print("\n[2/5] Placeholder, Hallucination & ADR-021 Hybrid-Script Check...")
+    # Exempt YAML 'title:' and H1 '# ' lines per ADR-021 Q4 (Searchable Header Exemption)
+    body_lines = [
+        line for line in content.splitlines()
+        if not line.strip().startswith("title:") and not line.strip().startswith("# ")
+    ]
+    body_content = "\n".join(body_lines)
+
     forbidden_patterns = [
-        (r'【輔助\s*\d+】', "Generic support placeholder (e.g. 【輔助 1】)"),
-        (r'【技能名稱】', "Generic skill placeholder (【技能名稱】)"),
+        (r'【.*?】', "Forbidden '【】' bracket detected (ADR-021: Use **bold** for Proper Entities)"),
         (r'\[待補充\]', "Pending placeholder ([待補充])"),
         (r'\[待定\]', "Pending placeholder ([待定])"),
         (r'\[推測\]', "Inference placeholder ([推測])"),
@@ -109,29 +115,32 @@ def verify_bd(md_path, check_zip=False):
         (r'\bFIXME\b', "FIXME comment")
     ]
 
-    # ADR-020: Blacklist of non-purified mainland terms & pseudo-traditional entities
+    # ADR-020 & ADR-021: Blacklist of mainland terms, slang, simplified system terms & affix shorthand in body
     blacklist_terms = [
-        (r'十字弩', "Mainland/Slang '十字弩' detected -> Must be purified to official '十字弓'"),
-        (r'(?:雇佣兵|僱傭兵)', "Mainland/Slang '雇佣兵' detected -> Must be purified to official '傭兵'"),
-        (r'(?:女巫猎手|女巫獵手)', "Slang '女巫猎手' detected -> Must be purified to official '女巫獵人'"),
-        (r'(?:鲜血法师|鮮血法師)', "Slang '鲜血法师' detected -> Must be purified to official '血法師'"),
-        (r'(?:炼狱术士|煉獄術士)', "Slang '炼狱术士' detected -> Must be purified to official '獄火師'"),
-        (r'(?:宝石术士|寶石術士)', "Slang '宝石术士' detected -> Must be purified to official '古靈軍團'"),
-        (r'(?:爆炸榴弹|爆炸榴彈)', "Slang '爆炸榴弹' detected -> Must be purified to official '爆炸擲彈'"),
-        (r'(?:毒气榴弹|毒氣榴彈)', "Slang '毒气榴弹' detected -> Must be purified to official '毒氣擲彈'"),
+        (r'十字弩', "Mainland/Slang '十字弩' -> Must be '十字弓'"),
+        (r'(?:雇佣兵|僱傭兵)', "Mainland/Slang '雇佣兵' -> Must be '傭兵'"),
+        (r'(?:女巫猎手|女巫獵手)', "Slang '女巫猎手' -> Must be '女巫獵人'"),
+        (r'(?:鲜血法师|鮮血法師)', "Slang '鲜血法师' -> Must be '血法師'"),
+        (r'(?:炼狱术士|煉獄術士)', "Slang '炼狱术士' -> Must be '獄火師'"),
+        (r'(?:宝石术士|寶石術士)', "Slang '宝石术士' -> Must be '古靈軍團'"),
+        (r'(?:爆炸榴弹|爆炸榴彈)', "Slang '爆炸榴弹' -> Must be '爆炸擲彈'"),
+        (r'(?:毒气榴弹|毒氣榴彈)', "Slang '毒气榴弹' -> Must be '毒氣擲彈'"),
+        (r'(?:攻略俗称|散弹|火雷|毒附魔|短暂引线|快攻|狼扑|狼头)', "Slang alias detected in body/table (ADR-021: Zero slang retention)"),
+        (r'(?:物理点伤|火点伤|冰点伤|电点伤|攻速|暴击率|加血|火抗|冰抗|电抗|混抗)', "Affix shorthand detected -> Must use poe2db verbatim Traditional Chinese affix text"),
+        (r'(?:天赋|升华|护甲|闪避|词缀|异界|传奇)', "Unconverted Simplified game system term in body -> Must use Traditional (天賦/昇華/護甲/閃避/詞綴/異界/傳奇)")
     ]
 
     found_placeholders = []
     for pattern, desc in forbidden_patterns:
-        matches = re.findall(pattern, content)
+        matches = re.findall(pattern, body_content)
         if matches:
             found_placeholders.append(f"{desc} (found {len(matches)}x)")
 
     found_blacklist = []
     for pattern, desc in blacklist_terms:
-        matches = re.findall(pattern, content)
+        matches = re.findall(pattern, body_content)
         if matches:
-            found_blacklist.append(f"{desc} (found {len(matches)}x)")
+            found_blacklist.append(f"{desc} (found {len(matches)}x: {matches[:3]})")
 
     if found_placeholders:
         for ph in found_placeholders:

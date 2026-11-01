@@ -40,29 +40,42 @@ TEST_CASES = [
 ]
 
 def audit_general_file(md_path):
-    """General anti-hallucination and slang leakage audit for any BD markdown file."""
-    print(f"\n[General Security & Slang Audit] Auditing: {md_path}")
+    """General anti-hallucination, hybrid-script, and slang leakage audit for any BD markdown file."""
+    print(f"\n[General Security, Hybrid-Script & Slang Audit] Auditing: {md_path}")
     with open(md_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    # Exempt YAML 'title:' and H1 '# ' lines per ADR-021 Q4
+    body_lines = [
+        line for line in content.splitlines()
+        if not line.strip().startswith("title:") and not line.strip().startswith("# ")
+    ]
+    body_content = "\n".join(body_lines)
+
     slang_blacklist = [
-        "十字弩", "雇佣兵", "女巫猎手", "爆炸榴弹", "散射弹药", "鲜血法师", "炼狱术士", "宝石术士"
+        "十字弩", "雇佣兵", "女巫猎手", "爆炸榴弹", "散射弹药", "鲜血法师", "炼狱术士", "宝石术士",
+        "攻略俗称", "散弹", "火雷", "毒附魔", "短暂引线", "快攻", "狼扑", "狼头",
+        "物理点伤", "火点伤", "冰点伤", "电点伤", "攻速", "火抗", "冰抗", "电抗", "混抗",
+        "天赋", "升华", "护甲", "闪避", "词缀", "异界", "传奇"
     ]
     hallucination_indicators = [
         "TODO", "FIXME", "[待補充]", "[待定]", "[推測]"
     ]
 
     issues = []
+    if re.search(r'【.*?】', body_content):
+        issues.append("Forbidden '【】' bracket detected (ADR-021: Use **bold** for Proper Entities)")
+
     for slang in slang_blacklist:
-        if slang in content:
-            issues.append(f"Slang leakage detected: '{slang}' (Must be purified to official poe2db Traditional Chinese)")
+        if slang in body_content:
+            issues.append(f"Slang / unconverted Simplified game term detected: '{slang}' (Must use official poe2db Traditional Chinese)")
 
     for ph in hallucination_indicators:
-        if ph in content:
+        if ph in body_content:
             issues.append(f"Forbidden placeholder/hallucination indicator: '{ph}'")
 
     if not issues:
-        print("  ✅ [PASS] 0 slang leaks, 0 forbidden hallucination placeholders detected.")
+        print("  ✅ [PASS] 0 slang leaks, 0 unconverted game terms, 0 '【】' brackets, 0 forbidden placeholders.")
         return True
     else:
         print(f"  ❌ [FAIL] Found {len(issues)} issue(s):")

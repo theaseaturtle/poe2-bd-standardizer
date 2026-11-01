@@ -346,6 +346,169 @@
       "zh_cn": "架势条 / 击晕条",
       "slang": ["打空架势", "破防瘫痪", "失衡"],
       "desc": "Boss 受到高冲击/闪光后累积满瘫痪并承受巨量额外伤害"
+    },
+    {
+      "zh_tw": "暈眩累積",
+      "en": "Stun Buildup",
+      "zh_cn": "击晕积累 / 架势伤害",
+      "slang": ["打晕条", "削韧"],
+      "desc": "攻击对敌人累积的晕眩量表，满额后触发重度晕眩"
+    },
+    {
+      "zh_tw": "盛怒",
+      "en": "Rage",
+      "zh_cn": "怒气 / 狂怒",
+      "slang": ["红球怒气", "怒火"],
+      "desc": "近战与战吼积累的战斗资源，每点提供攻击伤害增幅"
+    },
+    {
+      "zh_tw": "護甲",
+      "en": "Armour",
+      "zh_cn": "护甲",
+      "slang": ["物免甲"],
+      "desc": "减免击中物理伤害的基础防御属性"
+    },
+    {
+      "zh_tw": "閃避值",
+      "en": "Evasion Rating",
+      "zh_cn": "闪避",
+      "slang": ["闪避率"],
+      "desc": "规避敌方投射物与近战击中的基础防御属性"
+    },
+    {
+      "zh_tw": "能量護盾",
+      "en": "Energy Shield",
+      "zh_cn": "能量护盾",
+      "slang": ["ES", "蓝盾", "护盾"],
+      "desc": "优先于生命承受伤害的可充能屏障"
+    }
+  ],
+  "affix_templates": [
+    {
+      "zh_tw": "擲彈技能發射額外 1 個投射物",
+      "en": "Grenade Skills fire 1 additional Projectile",
+      "forbidden_slang": ["多发1个榴弹", "额外1颗手雷"],
+      "slot": "轟擊十字弓 (固定詞綴 Implicit)"
+    },
+    {
+      "zh_tw": "附加 # 至 # 物理傷害",
+      "en": "Adds # to # Physical Damage",
+      "forbidden_slang": ["物理点伤", "物点", "附加物理点伤"],
+      "slot": "武器 / 戒指 / 手套"
+    },
+    {
+      "zh_tw": "增加 #% 物理傷害",
+      "en": "#% increased Physical Damage",
+      "forbidden_slang": ["物理大伤", "物伤百分比", "本地物伤"],
+      "slot": "武器"
+    },
+    {
+      "zh_tw": "附加 # 至 # 火焰傷害",
+      "en": "Adds # to # Fire Damage",
+      "forbidden_slang": ["火点伤", "火焰点伤"],
+      "slot": "武器 / 戒指 / 手套"
+    },
+    {
+      "zh_tw": "附加 # 至 # 冰冷傷害",
+      "en": "Adds # to # Cold Damage",
+      "forbidden_slang": ["冰点伤", "冰霜点伤"],
+      "slot": "武器 / 戒指 / 手套"
+    },
+    {
+      "zh_tw": "附加 # 至 # 閃電傷害",
+      "en": "Adds # to # Lightning Damage",
+      "forbidden_slang": ["电点伤", "闪电点伤"],
+      "slot": "武器 / 戒指 / 手套"
+    },
+    {
+      "zh_tw": "增加 #% 攻擊速度",
+      "en": "#% increased Attack Speed",
+      "forbidden_slang": ["攻速", "提高攻速"],
+      "slot": "武器 / 手套"
+    },
+    {
+      "zh_tw": "增加 #% 施放速度",
+      "en": "#% increased Cast Speed",
+      "forbidden_slang": ["施法速度", "读条速度"],
+      "slot": "法杖 / 戒指 / 項鍊"
+    },
+    {
+      "zh_tw": "+# 所有投射物技能的等級",
+      "en": "+# to Level of all Projectile Skills",
+      "forbidden_slang": ["投射物技能+1", "投射物等级"],
+      "slot": "武器 / 項鍊"
+    },
+    {
+      "zh_tw": "+# 最大生命",
+      "en": "+# to maximum Life",
+      "forbidden_slang": ["生命", "最大血量", "加血"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "+# 精魂",
+      "en": "+# to Spirit",
+      "forbidden_slang": ["加精魂", "额外精魂"],
+      "slot": "權杖 / 胸甲 / 項鍊"
+    },
+    {
+      "zh_tw": "+#% 火焰抗性",
+      "en": "+#% to Fire Resistance",
+      "forbidden_slang": ["火抗"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "+#% 冰冷抗性",
+      "en": "+#% to Cold Resistance",
+      "forbidden_slang": ["冰抗"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "+#% 閃電抗性",
+      "en": "+#% to Lightning Resistance",
+      "forbidden_slang": ["电抗"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "+#% 所有元素抗性",
+      "en": "+#% to all Elemental Resistances",
+      "forbidden_slang": ["全抗", "三抗"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "+#% 混沌抗性",
+      "en": "+#% to Chaos Resistance",
+      "forbidden_slang": ["混抗"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "增加 #% 移動速度",
+      "en": "#% increased Movement Speed",
+      "forbidden_slang": ["移速", "跑速"],
+      "slot": "鞋子"
+    },
+    {
+      "zh_tw": "+# 護甲",
+      "en": "+# to Armour",
+      "forbidden_slang": ["基础护甲", "加护甲"],
+      "slot": "防具 / 腰帶"
+    },
+    {
+      "zh_tw": "+# 力量",
+      "en": "+# to Strength",
+      "forbidden_slang": ["加力量"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "+# 敏捷",
+      "en": "+# to Dexterity",
+      "forbidden_slang": ["加敏捷"],
+      "slot": "防具 / 飾品"
+    },
+    {
+      "zh_tw": "+# 智慧",
+      "en": "+# to Intelligence",
+      "forbidden_slang": ["加智力", "加智慧"],
+      "slot": "防具 / 飾品"
     }
   ]
 }

@@ -107,3 +107,32 @@
 * **「寶石術士」 vs 「古靈軍團」**：昇華正名為**古靈軍團**。
 * **「開 3 光環」**：在 POE2 中通常意味著需要計算**精魂上限**（基礎 100 + 裝備/天賦），請勿寫成「魔力保留」。
 * **「裝備洗 6 連 / 6 洞」**：POE2 裝備上**沒有技能連線插槽**！連線是指「主動技能寶石開出輔助插槽」。裝備上的插槽稱為「符文插槽」。
+
+---
+
+## 七、 裝備詞綴官方繁英原文對照表 (Official Affix Templates - ADR-021)
+
+> [!IMPORTANT]
+> 配裝表中嚴禁使用「物理點傷」、「攻速」、「加血」等簡體口語概括，必須嚴格採用下方 `poe2db.tw` 官方繁中詞綴原文模板並配對英文 Trade 檢索詞，避免新手混淆相似詞條：
+
+| 官方繁中詞綴原文 (poe2db.tw) | 官方市集英文檢索詞 (Trade Stat Filter) | 嚴禁使用的簡體概括/黑話 | 常見部位 |
+| :--- | :--- | :--- | :--- |
+| `擲彈技能發射額外 1 個投射物` | `Grenade Skills fire 1 additional Projectile` | 多发1个榴弹 / 额外手雷 | **轟擊十字弓** 固定詞綴 |
+| `附加 # 至 # 物理傷害` | `Adds # to # Physical Damage` | 物理点伤 / 物点 | 武器 / 戒指 / 手套 |
+| `增加 #% 物理傷害` | `#% increased Physical Damage` | 物理大伤 / 本地物伤 | 武器 |
+| `附加 # 至 # 火焰傷害` | `Adds # to # Fire Damage` | 火点伤 / 火焰点伤 | 武器 / 戒指 / 手套 |
+| `附加 # 至 # 冰冷傷害` | `Adds # to # Cold Damage` | 冰点伤 / 冰霜点伤 | 武器 / 戒指 / 手套 |
+| `附加 # 至 # 閃電傷害` | `Adds # to # Lightning Damage` | 电点伤 / 闪电点伤 | 武器 / 戒指 / 手套 |
+| `增加 #% 攻擊速度` | `#% increased Attack Speed` | 攻速 / 提高攻速 | 武器 / 手套 |
+| `增加 #% 施放速度` | `#% increased Cast Speed` | 施法速度 / 读条速度 | 法杖 / 戒指 / 項鍊 |
+| `+# 所有投射物技能的等級` | `+# to Level of all Projectile Skills` | 投射物技能+1 / 投射物等级 | 武器 / 項鍊 |
+| `+# 最大生命` | `+# to maximum Life` | 生命 / 最大血量 / 加血 | 防具 / 飾品 |
+| `+# 精魂` | `+# to Spirit` | 加精魂 / 额外精魂 | 權杖 / 胸甲 / 項鍊 |
+| `+#% 火焰抗性` | `+#% to Fire Resistance` | 火抗 | 防具 / 飾品 |
+| `+#% 冰冷抗性` | `+#% to Cold Resistance` | 冰抗 | 防具 / 飾品 |
+| `+#% 閃電抗性` | `+#% to Lightning Resistance` | 电抗 | 防具 / 飾品 |
+| `+#% 所有元素抗性` | `+#% to all Elemental Resistances` | 全抗 / 三抗 | 防具 / 飾品 |
+| `+#% 混沌抗性` | `+#% to Chaos Resistance` | 混抗 | 防具 / 飾品 |
+| `增加 #% 移動速度` | `#% increased Movement Speed` | 移速 / 跑速 | 鞋子 |
+| `+# 護甲` | `+# to Armour` | 基础护甲 / 加护甲 | 防具 / 腰帶 |
+| `+# 力量` / `+# 敏捷` / `+# 智慧` | `+# to Strength` / `Dexterity` / `Intelligence` | 加力量 / 加敏捷 / 加智力 | 防具 / 飾品 |
